@@ -17,8 +17,8 @@ db.authors.find()
 db.books.find()
 
 //step 6: insert 2 books
-db.books.insertOne({title: "Cry the Beloved Country", published_year: 1948, auther_ids: ["author_004"]}) 
-db.books.insertOne({title: "The Color Purple", published_year: 1982, auther_ids: ["author_005"]})
+db.books.insertOne({title: "Cry the Beloved Country", published_year: 1948, author_ids: ["author_004"]}) 
+db.books.insertOne({title: "The Color Purple", published_year: 1982, author_ids: ["author_005"]})
 
 //step 7: add missing authors
 db.authors.insertOne(

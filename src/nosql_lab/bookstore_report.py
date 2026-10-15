@@ -3,6 +3,7 @@
 import os
 import logging
 import pymongo
+from typing import Any
 
 #creating the logger
 logger = logging.getLogger(__name__)
@@ -12,7 +13,10 @@ MONGOURL = os.getenv('MONGODB_ATLAS_URL')
 MONGOUSER = os.getenv('MONGODB_ATLAS_USER')
 MONGOPWD = os.getenv('MONGODB_ATLAS_PWD')
 
-def main():
+# Authors to include in the report: two from the loaded files plus one added in step 7
+AUTHOR_IDS = ["author_002", "author_003", "author_004"]
+
+def main() -> None:
     """Connect to MongoDB Atlas and print each author with their books."""
     # Stop early with a clear message if any credential is missing
     if not all([MONGOURL, MONGOUSER, MONGOPWD]):
@@ -22,7 +26,7 @@ def main():
         )
         return
  
-    client = None
+    client: pymongo.MongoClient[dict[str, Any]] | None = None
     try:
         # Connect to Atlas using the URL plus username and password
         client = pymongo.MongoClient(
